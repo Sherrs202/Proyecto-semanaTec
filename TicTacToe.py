@@ -3,7 +3,6 @@ from turtle import *
 
 from freegames import line
 
-
 def grid():
     """Draw tic-tac-toe grid."""
     line(-67, 200, -67, -200)
