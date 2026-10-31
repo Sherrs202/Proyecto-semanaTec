@@ -36,18 +36,29 @@ def floor(value):
     """Round value down to grid with square size 133."""
     return ((value + 200) // 133) * 133 - 200
 
-state = {'player': 0}
+# MODIFICACIÓN: Se añade el estado Ocupado para marcar casillas que ya se seleccionaron.
+state = {'player': 0, 'ocupado': []}
 players = [drawx, drawo]
 
 def tap(x, y):
     """Draw X or O in tapped square."""
     x = floor(x)
     y = floor(y)
+    
+    # MODIFICACIÓN: Se evalúa si la casilla está ocupada.
+    # Si está ocupada se ignora la selección con return.
+    if (x, y) in state['ocupado']:
+        return
+        
+    # MODIFICACIÓN: Se marca la selección de la casilla vacía, ahora como ocupada.
+    state['ocupado'].append((x, y))
+    
     player = state['player']
     draw = players[player]
     draw(x, y)
     update()
     state['player'] = not player
+
 
 setup(420, 420, 370, 0)
 hideturtle()
