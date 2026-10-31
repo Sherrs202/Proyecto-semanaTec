@@ -119,7 +119,7 @@ def world():
         x = (index % 20) * 20 - 200
         y = 180 - (index // 20) * 20
         
-        if title == 0:
+        if tile == 0:
             # Paredes de color azul electrico
             path.color('#152C70', '#2455C7')
             square(x, y)
@@ -131,7 +131,7 @@ def world():
             
             if tile == 1:
                 #Dibujar el alimento con su nueva forma y color
-                square(x,y)
+                dibujar_alimento(x,y)
 
 def mover_fantasma(point, course):
     """Mover un fantasma y cambiar su direccion si encuentra una pared."""
