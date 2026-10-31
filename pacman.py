@@ -131,6 +131,7 @@ def move():
         state['score'] += 1
         x = (index % 20) * 20 - 200
         y = 180 - (index // 20) * 20
+        path.color('#101B36', '#101B36')
         square(x, y)
 
     up()
