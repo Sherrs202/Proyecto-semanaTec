@@ -51,19 +51,23 @@ tiles = [
 # fmt: on
 
 
-def square(x, y):
-    """Draw square using path at (x, y)."""
+def dibujar_alimento(x, y):
+    """Dibujar los alimentos como diamantes de color rosa neon."""
+
     path.up()
-    path.goto(x, y)
+    path.goto(x + 10, y + 15)
+    path.color('#FF4FD8')
     path.down()
+
     path.begin_fill()
 
-    for count in range(4):
-        path.forward(20)
-        path.left(90)
+    path.goto(x + 15, y + 10)
+    path.goto(x + 10, y + 5)
+    path.goto(x + 5, y + 10)
+    path.goto(x + 10, y + 15)
 
     path.end_fill()
-
+    path.up()
 
 def offset(point):
     """Return offset of point in tiles."""
