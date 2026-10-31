@@ -116,6 +116,23 @@ def world():
                 #Dibujar el alimento con su nueva forma y color
                 square(x,y)
 
+def mover_fantasma(point, course):
+    """Mover un fantasma y cambiar su direccion si encuentra una pared."""
+
+    if valid(point + course):
+        point.move(course)
+    else:
+        options = [
+            vector(5, 0),
+            vector(-5, 0),
+            vector(0, 5),
+            vector(0, -5),
+        ]
+
+        plan = choice(options)
+        course.x = plan.x
+        course.y = plan.y
+
 def move():
     """Move pacman and all ghosts."""
     writer.undo()
@@ -142,18 +159,10 @@ def move():
     dot(20, 'yellow')
 
     for point, course in ghosts:
-        if valid(point + course):
-            point.move(course)
-        else:
-            options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
-            ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
+
+        # Aumentar la velocidad realizando dos movimientos por ciclo
+        mover_fantasma(point, course)
+        mover_fantasma(point, course)
 
         up()
         goto(point.x + 10, point.y + 10)
@@ -166,7 +175,7 @@ def move():
             return
 
     # Aumentar la velocidad del juego reduciando el intervalo
-    ontimer(move, 70)
+    ontimer(move, 100)
 
 
 def change(x, y):
