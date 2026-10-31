@@ -113,10 +113,8 @@ def world():
             square(x, y)
             
             if tile == 1:
-                path.up()
-                path.goto(x + 10, y + 10)
-                path.dot(2, 'white')
-
+                #Dibujar el alimento con su nueva forma y color
+                dibujar_alimento(x,y)
 
 def move():
     """Move pacman and all ghosts."""
