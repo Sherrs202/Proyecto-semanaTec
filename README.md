@@ -8,6 +8,7 @@ Realize modificaciones de cambiar el tablero, la comida y velocidad de fantasmas
 
 
 ## Andrea Sofía Nava Nieto A01710468  
+**Usuario:** a01710468-max
 **Videojuego:** Memory
 
 ### Descripción de las modificaciones
