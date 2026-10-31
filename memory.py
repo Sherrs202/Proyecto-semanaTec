@@ -38,18 +38,22 @@ def square(x, y):
     end_fill()
 
 
+# Calculate the tile index based on the selected coordinates.
+# The calculation uses four columns instead of eight.
 def index(x, y):
     """Convert (x, y) coordinates to tiles index."""
 
     # Adjust coordinates for the 4x4 board
     return int((x + 100) // 50 + ((y + 100) // 50) * 4)
 
+# Convert a tile index into coordinates for the centered 4x4 board.
 def xy(count):
     """Convert tiles count to (x, y) coordinates."""
 
     # Position tiles in a centered 4x4 grid
     return (count % 4) * 50 - 100, (count // 4) * 50 - 100
 
+# Handle player clicks, count matching pairs, and detect victory.
 def tap(x, y):
     """Update mark and hidden tiles based on tap."""
 
@@ -83,6 +87,7 @@ def tap(x, y):
             print("¡Felicidades! Has descubierto todos los pares.")
             print("¡Juego terminado!")
 
+# Refresh the game screen and display the remaining hidden tiles.
 def draw():
     """Draw image and tiles."""
 
