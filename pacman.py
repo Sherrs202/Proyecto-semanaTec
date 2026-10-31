@@ -52,6 +52,23 @@ tiles = [
 
 
 def square(x, y):
+    """Dibujar un cuadrado de 20x20 pixeles."""
+
+    path.up()
+    path.goto(x, y)
+    path.down()
+
+    path.begin_fill()
+
+    for count in range(4):
+        path.forward(20)
+        path.left(90)
+
+    path.end_fill()
+    path.up()
+
+
+def dibujar_alimento(x, y):
     """Dibujar los alimentos como diamantes de color rosa neon."""
 
     path.up()
