@@ -29,3 +29,9 @@ Se modificó el tablero original de 8×8 a 4×4, reduciendo el
 número de casillas de 64 a 16 y actualizando las funciones
 necesarias para su funcionamiento.
 
+## Alberto de Jesús Vázquez Camacho
+**Videojuego:** Tic Tac Toe
+
+Modifiqué el color de las X y Os y su posición.
+Evalué las casillas ocupadas.
+Determiné el final de la partida, declarando el ganador o un empate.
