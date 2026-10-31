@@ -51,7 +51,7 @@ tiles = [
 # fmt: on
 
 
-def dibujar_alimento(x, y):
+def square(x, y):
     """Dibujar los alimentos como diamantes de color rosa neon."""
 
     path.up()
@@ -114,7 +114,7 @@ def world():
             
             if tile == 1:
                 #Dibujar el alimento con su nueva forma y color
-                dibujar_alimento(x,y)
+                square(x,y)
 
 def move():
     """Move pacman and all ghosts."""
@@ -134,6 +134,7 @@ def move():
         x = (index % 20) * 20 - 200
         y = 180 - (index // 20) * 20
         path.color('#101B36', '#101B36')
+        
         square(x, y)
 
     up()
@@ -164,7 +165,8 @@ def move():
         if abs(pacman - point) < 20:
             return
 
-    ontimer(move, 100)
+    # Aumentar la velocidad del juego reduciando el intervalo
+    ontimer(move, 70)
 
 
 def change(x, y):
