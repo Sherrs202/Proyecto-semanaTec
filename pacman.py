@@ -89,18 +89,25 @@ def valid(point):
 
 
 def world():
-    """Draw world using path."""
-    bgcolor('black')
-    path.color('blue')
-
+    """Dibujar el laberinto con estilo arcade."""
+    
+    bgcolor('#080B1A')
+    
     for index in range(len(tiles)):
         tile = tiles[index]
-
-        if tile > 0:
-            x = (index % 20) * 20 - 200
-            y = 180 - (index // 20) * 20
+        x = (index % 20) * 20 - 200
+        y = 180 - (index // 20) * 20
+        
+        if title == 0:
+            # Paredes de color azul electrico
+            path.color('#152C70', '#2455C7')
             square(x, y)
-
+            
+        else:
+            # Caminos oscuros para Pac-Man
+            path.color('#101B36', '#101B36')
+            square(x, y)
+            
             if tile == 1:
                 path.up()
                 path.goto(x + 10, y + 10)
