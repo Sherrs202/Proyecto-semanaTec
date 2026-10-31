@@ -16,7 +16,9 @@ from freegames import path
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
-state = {'mark': None}
+
+# Initialize the counter for discovered pairs
+state = {'mark': None, 'pairs': 0}
 hide = [True] * 64
 
 
@@ -55,6 +57,11 @@ def tap(x, y):
         hide[mark] = False
         state['mark'] = None
 
+        # Increase the counter when two matching tiles are found
+        state['pairs'] += 1
+
+        # Display the total number of discovered pairs
+        print("Pares descubiertos:", state['pairs'])
 
 def draw():
     """Draw image and tiles."""
