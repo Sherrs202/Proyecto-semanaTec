@@ -63,6 +63,11 @@ def tap(x, y):
         # Display the total number of discovered pairs
         print("Pares descubiertos:", state['pairs'])
 
+	# Check whether all tiles have been revealed
+        if not any(hide):
+            print("¡Felicidades! Has descubierto todos los pares.")
+            print("¡Juego terminado!")
+
 def draw():
     """Draw image and tiles."""
     clear()
