@@ -15,12 +15,15 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+
+# Create 8 pairs for a 4x4 board
+tiles = list(range(8)) * 2
 
 # Initialize the counter for discovered pairs
 state = {'mark': None, 'pairs': 0}
-hide = [True] * 64
 
+# Initialize the 16 tiles as hidden
+hide = [True] * 16
 
 def square(x, y):
     """Draw white square with black outline at (x, y)."""
@@ -37,17 +40,29 @@ def square(x, y):
 
 def index(x, y):
     """Convert (x, y) coordinates to tiles index."""
-    return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
+    # Adjust coordinates for the 4x4 board
+    return int((x + 100) // 50 + ((y + 100) // 50) * 4)
 
 def xy(count):
     """Convert tiles count to (x, y) coordinates."""
-    return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
+    # Position tiles in a centered 4x4 grid
+    return (count % 4) * 50 - 100, (count // 4) * 50 - 100
 
 def tap(x, y):
     """Update mark and hidden tiles based on tap."""
+
+    # Ignore clicks outside the 4x4 board
+    if not (-100 <= x < 100 and -100 <= y < 100):
+        return
+
     spot = index(x, y)
+
+    # Ignore tiles that have already been revealed
+    if not hide[spot]:
+        return
+
     mark = state['mark']
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
@@ -63,19 +78,21 @@ def tap(x, y):
         # Display the total number of discovered pairs
         print("Pares descubiertos:", state['pairs'])
 
-	# Check whether all tiles have been revealed
+        # Check whether all tiles have been revealed
         if not any(hide):
             print("¡Felicidades! Has descubierto todos los pares.")
             print("¡Juego terminado!")
 
 def draw():
     """Draw image and tiles."""
+
     clear()
     goto(0, 0)
     shape(car)
     stamp()
 
-    for count in range(64):
+    # Draw the 16 tiles of the 4x4 board
+    for count in range(16):
         if hide[count]:
             x, y = xy(count)
             square(x, y)
@@ -92,12 +109,18 @@ def draw():
     update()
     ontimer(draw, 100)
 
-
 shuffle(tiles)
+
 setup(420, 420, 370, 0)
+
 addshape(car)
+
 hideturtle()
+
 tracer(False)
+
 onscreenclick(tap)
+
 draw()
+
 done()
