@@ -27,7 +27,3 @@ Se modificó el tablero original de 8×8 a 4×4, reduciendo el
 número de casillas de 64 a 16 y actualizando las funciones
 necesarias para su funcionamiento.
 
-### Documentación del código
-
-Se incorporaron comentarios explicativos en inglés para facilitar
-la comprensión de las modificaciones realizadas.
